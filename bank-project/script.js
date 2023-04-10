@@ -74,8 +74,24 @@ const displayMovements = function (movements){
         containerMovements.insertAdjacentHTML('afterbegin', html);
     })
 }
-
 displayMovements(account1.movements);
+
+const calcDisplayBalance = function (movements){
+    const balance = movements.reduce((acc, mov) => acc + mov, 0);
+    labelBalance.textContent = `${balance} EUR`;
+}
+calcDisplayBalance(account1.movements);
+const createUsernames = function(accs){
+    accs.forEach(function (acc){
+        acc.username = acc.owner
+            .toLowerCase()
+            .split(' ')
+            .map(name => name[0])
+            .join('');
+    });
+};
+createUsernames(accounts)
+
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -87,6 +103,28 @@ const currencies = new Map([
     ['GBP', 'Pound sterling'],
 ]);
 
+const eurToUsd = 1.1;
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+const movementsUSD = movements.map(mov => mov * eurToUsd);
+const movUSD = [];
+for(const mov of movements) movUSD.push(mov * eurToUsd);
+console.log(movUSD);
+console.log(movementsUSD);
+
+const deposits = movements.filter(function(mov){
+    return mov > 0;
+})
+
+const depositFor = [];
+for(const mov of movements) if(mov > 0) depositFor.push(mov);
+console.log(deposits);
+console.log(depositFor);
+
+const withdrawalsFor = [];
+for(const mov of movements) if(mov < 0) withdrawalsFor.push(mov);
+console.log(withdrawalsFor);
+
+const balance = movements.reduce((acc,curr) => acc + curr, 0);
+console.log(balance)
 /////////////////////////////////////////////////
