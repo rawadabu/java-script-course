@@ -29,6 +29,10 @@ const resturant = {
         console.log(`Order recevied! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will
         be delivered too ${address} at ${time}.`);
     },
+
+    orderPasta: function (ing1, ing2, ing3){
+        console.log(`Here is you delicious pasta with ${ing1}, ${ing2} and ${ing3}`);
+    },
 }
 
 resturant.orderDelivery({
@@ -46,16 +50,26 @@ console.log(resturantName, hours, tags);
 // Default values
 const {menu = [], starterMenu: starters = []} = resturant; // Setting defaults
 
+// Spread Operator ...
+const arr = [7,8,9];
+const badNewArr = [1,2,arr[0], arr[1], arr[2]];
+console.log(badNewArr);
+
+const newArr = [1,2,...arr]; // Expand this array with the new arr.
+
+const newMenu = [...resturant.mainMenu, 'Gnocci'];
+
+// const ingredients = [prompt("Let\'s make Pasta! Ingredient 1?")];
 // Mutating variables
-let a = 111;
-let b = 999;
-const obj = {a: 23, b: 11, c:14};
-({a,b} = obj);
-console.log(a,b);
+//let a = 111;
+// let b = 999;
+// const obj = {a: 23, b: 11, c:14};
+// ({a,b} = obj);
+// console.log(a,b);
 
 // Nested objects
-const {fri: {open: o, close: c}} = openingHours;
-console.log(o,c);
+// const {fri: {open: o, close: c}} = openingHours;
+// console.log(o,c);
 
 //const arr = [2,3,4];
 // const a = arr[0]
