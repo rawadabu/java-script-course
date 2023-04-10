@@ -1,4 +1,23 @@
 'use strict';
+// Object
+
+const weekDays = ['mon','tue','wed','thu','fri','sat','sun'];
+
+const openingHours = {
+    [weekDays[3]]:{
+        open:12,
+            close:22,
+    },
+    fri:{
+        open:11,
+            close:23,
+    },
+    sat:{
+        open:0, // 24 Hours Open
+            close:24,
+    },
+}
+
 
 const resturant = {
     name: 'Classico Italiano',
@@ -6,20 +25,9 @@ const resturant = {
     categories: ['Italian', 'Pizzeria', 'Vegeterian', 'Organic'],
     starterMenu: ['Foccacia', 'Bruscetta', 'Garlic Bread', 'Caprese Salad'],
     mainMenu: ['Pizza', 'Pasta', 'Risotto'],
-    openingHours:{
-        thu:{
-            open:12,
-            close:22,
-        },
-        fri:{
-            open:11,
-            close:23,
-        },
-        sat:{
-            open:0, // 24 Hours Open
-            close:24,
-        },
-    },
+
+    // ES6 enhanced object literals
+    openingHours,
 
     order: function (starterIndex, mainIndex){
         return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
@@ -42,22 +50,29 @@ resturant.orderDelivery({
     starterIndex: 2,
 })
 
-const {name, openingHours, categories} = resturant;
+const {name, openinghours, categories} = resturant;
 console.log(name, openingHours, categories);
 const {name: resturantName, openingHours: hours, categories: tags} = resturant;
 console.log(resturantName, hours, tags);
 
 // Default values
-const {menu = [], starterMenu: starters = []} = resturant; // Setting defaults
+// const {menu = [], starterMenu: starters = []} = resturant; // Setting defaults
 
 // Spread Operator ...
-const arr = [7,8,9];
-const badNewArr = [1,2,arr[0], arr[1], arr[2]];
-console.log(badNewArr);
+// const arr = [7,8,9];
+// const badNewArr = [1,2,arr[0], arr[1], arr[2]];
+// console.log(badNewArr);
 
-const newArr = [1,2,...arr]; // Expand this array with the new arr.
+// const newArr = [1,2,...arr]; // Expand this array with the new arr.
 
-const newMenu = [...resturant.mainMenu, 'Gnocci'];
+// const newMenu = [...resturant.mainMenu, 'Gnocci'];
+
+// Rest Pattern
+// const arr = [1,2,...[3,4]];
+// console.log(arr);
+
+// const [a,b,...others] = [1,2,3,4,5];
+// console.log(a,b,others);
 
 // const ingredients = [prompt("Let\'s make Pasta! Ingredient 1?")];
 // Mutating variables
@@ -93,3 +108,28 @@ const newMenu = [...resturant.mainMenu, 'Gnocci'];
 // console.log(nested);
 // const [i,, j]= nested;
 // console.log(i, j);
+
+// SETS
+
+const orderSet = new Set(['Pasta', 'Pizza','Pizza', 'Risotto', 'Pasta', 'Pizza']);
+console.log(orderSet);
+console.log(orderSet.has('Bread')); // checks whether Bread includes in a set
+orderSet.add("Bread");
+orderSet.delete("Bread");
+console.log(orderSet);
+
+for (const order of orderSet) console.log(order);
+
+// Example
+
+const staff = ['Waiter', 'Chef', 'Waiter','Manager', 'Chef'];
+const staffUnique = [...new Set(staff)]; // we want it as array
+console.log(staff);
+console.log(staffUnique);
+
+// MAPS the keys can have any type
+const rest = new Map();
+rest.set("name","Classico Italiano");
+rest.set(1, 'Firenze, Italy');
+console.log(rest);
+
