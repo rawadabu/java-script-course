@@ -6,7 +6,7 @@
 
 // Data
 const account1 = {
-    owner: 'Jonas Schmedtmann',
+    owner: 'Tarik Merie',
     movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
     interestRate: 1.2, // %
     pin: 1111,
@@ -74,13 +74,33 @@ const displayMovements = function (movements){
         containerMovements.insertAdjacentHTML('afterbegin', html);
     })
 }
-displayMovements(account1.movements);
 
 const calcDisplayBalance = function (movements){
     const balance = movements.reduce((acc, mov) => acc + mov, 0);
     labelBalance.textContent = `${balance} EUR`;
 }
-calcDisplayBalance(account1.movements);
+
+const calcDisplaySummary = function (acc) {
+    const incomes = acc.movements
+        .filter(mov => mov > 0)
+        .reduce((acc, mov) => acc + mov, 0);
+    labelSumIn.textContent = `${incomes}€`;
+
+    const out = acc.movements
+        .filter(mov => mov < 0)
+        .reduce((acc, mov) => acc + mov, 0);
+    labelSumOut.textContent = `${Math.abs(out)}€`;
+
+    const interest = acc.movements
+        .filter(mov => mov > 0)
+        .map(deposit => (deposit * acc.interestRate) / 100)
+        .filter((int, i, arr) => {
+            // console.log(arr);
+            return int >= 1;
+        })
+        .reduce((acc, int) => acc + int, 0);
+    labelSumInterest.textContent = `${interest}€`;
+};
 const createUsernames = function(accs){
     accs.forEach(function (acc){
         acc.username = acc.owner
@@ -92,6 +112,27 @@ const createUsernames = function(accs){
 };
 createUsernames(accounts)
 
+// EVENT HANDLER
+let currentAccount;
+btnLogin.addEventListener('click', function(e){
+    e.preventDefault(); // Prevent form from submitting
+    currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
+    if(currentAccount?.pin === Number(inputLoginPin.value) ){ // Chaining, only if account does exist
+        // Display UI and welcoming message
+        labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ')[0]}`
+        containerApp.style.opacity = 100;
+
+        // Clear input fields
+        inputLoginUsername.value = inputLoginPin.value = '';
+        inputLoginPin.blur(); // LOSES THE CURSER FOCUS
+        // Display movements
+        displayMovements(currentAccount.movements);
+        // Display balance
+        calcDisplayBalance(currentAccount.movements);
+        // Display summary
+        calcDisplaySummary(currentAccount);
+    }
+})
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -103,28 +144,28 @@ const currencies = new Map([
     ['GBP', 'Pound sterling'],
 ]);
 
-const eurToUsd = 1.1;
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
-
-const movementsUSD = movements.map(mov => mov * eurToUsd);
-const movUSD = [];
-for(const mov of movements) movUSD.push(mov * eurToUsd);
-console.log(movUSD);
-console.log(movementsUSD);
-
-const deposits = movements.filter(function(mov){
-    return mov > 0;
-})
-
-const depositFor = [];
-for(const mov of movements) if(mov > 0) depositFor.push(mov);
-console.log(deposits);
-console.log(depositFor);
-
-const withdrawalsFor = [];
-for(const mov of movements) if(mov < 0) withdrawalsFor.push(mov);
-console.log(withdrawalsFor);
-
-const balance = movements.reduce((acc,curr) => acc + curr, 0);
-console.log(balance)
-/////////////////////////////////////////////////
+// const eurToUsd = 1.1;
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+//
+// const movementsUSD = movements.map(mov => mov * eurToUsd);
+// const movUSD = [];
+// for(const mov of movements) movUSD.push(mov * eurToUsd);
+// console.log(movUSD);
+// console.log(movementsUSD);
+//
+// const deposits = movements.filter(function(mov){
+//     return mov > 0;
+// })
+//
+// const depositFor = [];
+// for(const mov of movements) if(mov > 0) depositFor.push(mov);
+// console.log(deposits);
+// console.log(depositFor);
+//
+// const withdrawalsFor = [];
+// for(const mov of movements) if(mov < 0) withdrawalsFor.push(mov);
+// console.log(withdrawalsFor);
+//
+// const balance = movements.reduce((acc,curr) => acc + curr, 0);
+// console.log(balance)
+/////////////////////////////////////////////

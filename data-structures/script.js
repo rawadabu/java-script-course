@@ -133,3 +133,8 @@ rest.set("name","Classico Italiano");
 rest.set(1, 'Firenze, Italy');
 console.log(rest);
 
+// FIND
+const firstMeal = staff.find(mov => mov = "Waiter");
+console.log(staff);
+console.log(firstMeal);
+
