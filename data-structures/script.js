@@ -1,58 +1,63 @@
-'use strict';
+"use strict";
 // Object
 
-const weekDays = ['mon','tue','wed','thu','fri','sat','sun'];
+const weekDays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
 const openingHours = {
-    [weekDays[3]]:{
-        open:12,
-            close:22,
-    },
-    fri:{
-        open:11,
-            close:23,
-    },
-    sat:{
-        open:0, // 24 Hours Open
-            close:24,
-    },
-}
-
+  [weekDays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // 24 Hours Open
+    close: 24,
+  },
+};
 
 const resturant = {
-    name: 'Classico Italiano',
-    location: 'Via Angelo, Firenze, Italy',
-    categories: ['Italian', 'Pizzeria', 'Vegeterian', 'Organic'],
-    starterMenu: ['Foccacia', 'Bruscetta', 'Garlic Bread', 'Caprese Salad'],
-    mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  name: "Classico Italiano",
+  location: "Via Angelo, Firenze, Italy",
+  categories: ["Italian", "Pizzeria", "Vegeterian", "Organic"],
+  starterMenu: ["Foccacia", "Bruscetta", "Garlic Bread", "Caprese Salad"],
+  mainMenu: ["Pizza", "Pasta", "Risotto"],
 
-    // ES6 enhanced object literals
-    openingHours,
+  // ES6 enhanced object literals
+  openingHours,
 
-    order: function (starterIndex, mainIndex){
-        return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-    },
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
 
-    orderDelivery: function ({starterIndex, mainIndex, time, address}){
-        console.log(`Order recevied! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will
+  orderDelivery: function ({ starterIndex, mainIndex, time, address }) {
+    console.log(`Order recevied! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will
         be delivered too ${address} at ${time}.`);
-    },
+  },
 
-    orderPasta: function (ing1, ing2, ing3){
-        console.log(`Here is you delicious pasta with ${ing1}, ${ing2} and ${ing3}`);
-    },
-}
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is you delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
+};
 
 resturant.orderDelivery({
-    time:'22:30',
-    address: 'Via del sole,21',
-    mainIndex: 2,
-    starterIndex: 2,
-})
+  time: "22:30",
+  address: "Via del sole,21",
+  mainIndex: 2,
+  starterIndex: 2,
+});
 
-const {name, openinghours, categories} = resturant;
+const { name, openinghours, categories } = resturant;
 console.log(name, openingHours, categories);
-const {name: resturantName, openingHours: hours, categories: tags} = resturant;
+const {
+  name: resturantName,
+  openingHours: hours,
+  categories: tags,
+} = resturant;
 console.log(resturantName, hours, tags);
 
 // Default values
@@ -111,9 +116,16 @@ console.log(resturantName, hours, tags);
 
 // SETS
 
-const orderSet = new Set(['Pasta', 'Pizza','Pizza', 'Risotto', 'Pasta', 'Pizza']);
+const orderSet = new Set([
+  "Pasta",
+  "Pizza",
+  "Pizza",
+  "Risotto",
+  "Pasta",
+  "Pizza",
+]);
 console.log(orderSet);
-console.log(orderSet.has('Bread')); // checks whether Bread includes in a set
+console.log(orderSet.has("Bread")); // checks whether Bread includes in a set
 orderSet.add("Bread");
 orderSet.delete("Bread");
 console.log(orderSet);
@@ -122,19 +134,20 @@ for (const order of orderSet) console.log(order);
 
 // Example
 
-const staff = ['Waiter', 'Chef', 'Waiter','Manager', 'Chef'];
+const staff = ["Waiter", "Chef", "Waiter", "Manager", "Chef"];
 const staffUnique = [...new Set(staff)]; // we want it as array
 console.log(staff);
 console.log(staffUnique);
 
 // MAPS the keys can have any type
 const rest = new Map();
-rest.set("name","Classico Italiano");
-rest.set(1, 'Firenze, Italy');
+rest.set("name", "Classico Italiano");
+rest.set(1, "Firenze, Italy");
 console.log(rest);
 
 // FIND
-const firstMeal = staff.find(mov => mov = "Waiter");
+const firstMeal = staff.find((mov) => (mov = "Waiter"));
 console.log(staff);
 console.log(firstMeal);
 
+console.log(staff.some((mov) => mov === "Waiter"));
