@@ -146,16 +146,40 @@ rest.set(1, "Firenze, Italy");
 console.log(rest);
 
 // FIND
-const firstMeal = staff.find((mov) => (mov = "Waiter"));
-console.log(staff);
-console.log(firstMeal);
+// const firstMeal = staff.find((mov) => (mov = "Waiter"));
+// console.log(staff);
+// console.log(firstMeal);
 
-console.log(staff.some((mov) => mov === "Waiter"));
+// console.log(staff.some((mov) => mov === "Waiter"));
 
-const arrayFlat = [[1, 2, 3], 4, 5, [8, 9]];
-console.log(arrayFlat.flat());
+// const arrayFlat = [[1, 2, 3], 4, 5, [8, 9]];
+// console.log(arrayFlat.flat());
 
-const arrayDeep = [[[1, 2], 3], 4, 5, [[6, 8], 9]];
-console.log(arrayDeep.flat(1)); // We still got 2 level array, so flat only takes first level of nesting (depth 1 is the default)
-// To figure it, we need deeper depth
-console.log(arrayDeep.flat(2)); // Solved
+// const arrayDeep = [[[1, 2], 3], 4, 5, [[6, 8], 9]];
+// console.log(arrayDeep.flat(1)); // We still got 2 level array, so flat only takes first level of nesting (depth 1 is the default)
+// // To figure it, we need deeper depth
+// console.log(arrayDeep.flat(2)); // Solved
+
+// SORTING ARRAYS
+const arraySort = [1, 5, 4, 2, 3, 6];
+
+// Return < 0, A B (keep order)
+// Return > 0, B A (switch order)
+
+// Ascending order
+arraySort.sort((a, b) => {
+  if (a > b) return 1; // keep
+  if (b > a) return -1; // switch
+});
+
+// OR
+arraySort.sort((a, b) => a - b);
+
+// Desending order
+arraySort.sort((a, b) => {
+  if (a > b) return -1; // switch
+  if (b > a) return 1; // keep
+});
+
+// OR
+arraySort.sort((a, b) => b - a);
