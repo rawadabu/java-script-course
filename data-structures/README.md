@@ -25,11 +25,9 @@ The differance between filter and find is filter returns array with all the spec
 ## Reduce method
 
 In JavaScript, the reduce() method is used to reduce an array to a single value by applying a function to each element of the array. The reduce() method takes a callback function as its argument and an optional initial value.
-`const numbers = [1, 2, 3, 4, 5];
 
-const sum = numbers.reduce((accumulator, currentValue) => {
-return accumulator + currentValue;
-}, 0);
-
-console.log(sum); // Output: 15
-`
+`const numbers = [1, 2, 3, 4, 5];`
+`const sum = numbers.reduce((accumulator, currentValue) => {`
+`return accumulator + currentValue;`
+`}, 0);`
+`console.log(sum); // Output: 15`
