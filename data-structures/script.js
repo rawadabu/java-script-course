@@ -151,3 +151,11 @@ console.log(staff);
 console.log(firstMeal);
 
 console.log(staff.some((mov) => mov === "Waiter"));
+
+const arrayFlat = [[1, 2, 3], 4, 5, [8, 9]];
+console.log(arrayFlat.flat());
+
+const arrayDeep = [[[1, 2], 3], 4, 5, [[6, 8], 9]];
+console.log(arrayDeep.flat(1)); // We still got 2 level array, so flat only takes first level of nesting (depth 1 is the default)
+// To figure it, we need deeper depth
+console.log(arrayDeep.flat(2)); // Solved
