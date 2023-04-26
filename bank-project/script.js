@@ -261,3 +261,4 @@ const currencies = new Map([
 // const balance = movements.reduce((acc,curr) => acc + curr, 0);
 // console.log(balance)
 /////////////////////////////////////////////
+// Trying to connect via Jira
