@@ -39,3 +39,7 @@ console.log(5 / 2); // -> 2.5
 const isEven = (n) => n % 2 === 0;
 console.log(isEven(8)); // True
 console.log(isEven(23)); // False
+
+// Numeric separators
+const diameter = 287_460_000_000; // We need it to look 287,460,000,000, _ is the solution
+console.log(diameter); // -> The engine basically ignores the underscores
