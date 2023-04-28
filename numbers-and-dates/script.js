@@ -31,3 +31,11 @@ console.log(Math.trunc(-23.9)); // Rounds up  ->-24
 console.log((2.7).toFixed(0)); // toFixed returns a string and not a number
 console.log((2.7).toFixed(3)); // Will add zeroes to get 3 decimal parts ->2.700
 console.log(+(2.7).toFixed(3)); // Will add zeroes to get 3 decimal parts ->2.700 (Number returns)
+
+// The remainder operator
+console.log(5 % 2); // -> 1
+console.log(5 / 2); // -> 2.5
+
+const isEven = (n) => n % 2 === 0;
+console.log(isEven(8)); // True
+console.log(isEven(23)); // False

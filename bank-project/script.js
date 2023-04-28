@@ -230,6 +230,11 @@ btnClose.addEventListener('click', function (e) {
   inputClosePin.value = inputCloseUsername.value = '';
 });
 
+labelBalance.addEventListener('click', function () {
+  [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
+    if (i % 2 === 0) row.style.backgroundColor = 'orangered';
+  });
+});
 const currencies = new Map([
   ['USD', 'United States dollar'],
   ['EUR', 'Euro'],
