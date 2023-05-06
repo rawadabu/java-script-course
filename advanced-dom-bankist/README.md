@@ -34,3 +34,4 @@ header.append(message); // adds the first child of this element, or last using a
 ## Roadmap
 
 Advanced web project with dom manipulation and more events.
+![Alt text](img/advanced-dom.png)
