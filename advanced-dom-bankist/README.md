@@ -12,7 +12,8 @@ that are rendered in and by the browser.
 
 ## Selecting, Creating, and Deleting Elements
 
-`console.log(document.body);
+`
+console.log(document.body);
 console.log(document.head);
 const header = document.querySelectorAll(".header");
 const allSections = document.querySelectorAll(".section");
@@ -35,3 +36,7 @@ header.append(message); // adds the first child of this element, or last using a
 ## Roadmap
 
 Advanced web project with dom manipulation and more events.
+
+```
+
+```
