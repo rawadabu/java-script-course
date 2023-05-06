@@ -36,6 +36,10 @@ header.append(message); // adds the first child of this element, or last using a
 
 [MDN JavaScript Events](https://developer.mozilla.org/en-US/docs/Web/Events)
 
+- On mouseenter, with 3sec timer` setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000)`
+
+### Event Propagation: Bubbling and Capturing
+
 ## Roadmap
 
 Advanced web project with dom manipulation and more events.
