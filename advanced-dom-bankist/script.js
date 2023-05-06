@@ -7,6 +7,22 @@ const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const btnCloseModal = document.querySelector(".btn--close-modal");
 const btnsOpenModal = document.querySelectorAll(".btn--show-modal");
+const btnScrollTo = document.querySelector(".btn--scroll-to");
+const section1 = document.querySelector("#section--1");
+
+btnScrollTo.addEventListener("click", function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  //console.log(e.target.getBoundingClientRect());
+  // The distance between click and the top of the page
+  //console.log("Current scroll (X/Y)", window.pageXOffset, pageYOffset);
+
+  // To implement smooth, we need to specify an object left, top and behavior properties
+  window.scrollTo({
+    left: s1coords.left + window.pageXOffset,
+    top: s1coords.top + window.pageYOffset,
+    behavior: "smooth",
+  });
+});
 
 const openModal = function () {
   modal.classList.remove("hidden");
