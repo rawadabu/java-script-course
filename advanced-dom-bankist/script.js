@@ -16,12 +16,14 @@ btnScrollTo.addEventListener("click", function (e) {
   // The distance between click and the top of the page
   //console.log("Current scroll (X/Y)", window.pageXOffset, pageYOffset);
 
-  // To implement smooth, we need to specify an object left, top and behavior properties
-  window.scrollTo({
-    left: s1coords.left + window.pageXOffset,
-    top: s1coords.top + window.pageYOffset,
-    behavior: "smooth",
-  });
+  // To implement smooth, we need to specify an object left, top and behavior properties, but hardcoded
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: "smooth",
+  // });
+
+  section1.scrollIntoView({ behavior: "smooth" });
 });
 
 const openModal = function () {
