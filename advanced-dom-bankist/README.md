@@ -32,6 +32,10 @@ header.append(message); // adds the first child of this element, or last using a
 
 ## Styles, Attributes and Classes
 
+## Types of Events and Event Handler
+
+[MDN JavaScript Events](https://developer.mozilla.org/en-US/docs/Web/Events)
+
 ## Roadmap
 
 Advanced web project with dom manipulation and more events.
