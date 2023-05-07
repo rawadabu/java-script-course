@@ -11,7 +11,7 @@ const btnScrollTo = document.querySelector(".btn--scroll-to");
 const section1 = document.querySelector("#section--1");
 
 btnScrollTo.addEventListener("click", function (e) {
-  const s1coords = section1.getBoundingClientRect();
+  //const s1coords = section1.getBoundingClientRect();
   //console.log(e.target.getBoundingClientRect());
   // The distance between click and the top of the page
   //console.log("Current scroll (X/Y)", window.pageXOffset, pageYOffset);
