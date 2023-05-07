@@ -10,6 +10,7 @@ const btnsOpenModal = document.querySelectorAll(".btn--show-modal");
 const btnScrollTo = document.querySelector(".btn--scroll-to");
 const section1 = document.querySelector("#section--1");
 
+// Scroll to
 btnScrollTo.addEventListener("click", function (e) {
   //const s1coords = section1.getBoundingClientRect();
   //console.log(e.target.getBoundingClientRect());
@@ -24,6 +25,24 @@ btnScrollTo.addEventListener("click", function (e) {
   // });
 
   section1.scrollIntoView({ behavior: "smooth" });
+});
+
+// Event delegation
+document.querySelector(".nav__links").addEventListener("click", function (e) {
+  e.preventDefault();
+
+  // el.addEventListener("click", function (e) {
+  //   e.preventDefault();
+  //   const id = this.getAttribute("href");
+  //   console.log(id);
+  //   document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+  // }); BAD PRACTICE, WHAT IF WE HAVE 10000 ?, it creates 10000 copies?!
+  // Matching strategy
+  if (e.target.classList.contains("nav__link")) {
+    const id = e.target.getAttribute("href");
+    console.log(id);
+    document.querySelector(id).scrollIntoView({ behavior: "smooth" });
+  }
 });
 
 const openModal = function () {
@@ -50,3 +69,30 @@ document.addEventListener("keydown", function (e) {
 
 //////////////////////////////////////
 //////////////////////////////////////
+// rgb(255,255,255)
+// const randomInt = (min, max) =>
+//   Math.floor(Math.random() * (max - min + 1) + min);
+
+// const randomColor = () =>
+//   `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+
+// console.log(randomColor(0, 255));
+
+// document.querySelector(".nav__link").addEventListener("click", function (e) {
+//   this.style.backgroundColor = randomColor(0, 255);
+//   console.log("LINK", e.target);
+
+//   // STOP PROPAGATION
+//   // e.stopPropagation(); // the color only changes for LINK.
+// });
+
+// document.querySelector(".nav__links").addEventListener("click", function (e) {
+//   console.log("CONTAINER", e.target);
+//   this.style.backgroundColor = randomColor(0, 255);
+// });
+
+// document.querySelector(".nav").addEventListener("click", function (e) {
+//   console.log("NAV", e.target);
+//   this.style.backgroundColor = randomColor(0, 255);
+// });
+// So when clicking on Feature, which its navbar link, all the background (child, root) like nav__links and nav will change its colors, interestring
